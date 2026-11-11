@@ -640,6 +640,8 @@ struct AppLoader_NX::Impl {
         if (package == nullptr) {
             return;
         }
+        // RomFS updates also need the base NCA in the content provider.
+        native_extras.push_back(package);
         native = std::make_unique<AppLoader_NSP>(
             std::move(package), system->GetFileSystemController(), system->GetContentProvider(),
             program_id, program_index);
